@@ -73,37 +73,20 @@ var init = function (window) {
         it to the opposite side of the screen.
         */
         game.checkCirclePosition = function(circle) {
-            // if (circle.x > canvas.width) {
-            //     circle.x = 0
-            // }
-            // if (circle.x < 0) {
-            //     circle.x = canvas.width
-            // }
-            // if (circle.y < 0) {
-            //     circle.y = canvas.height
-            // }
-            // if (circle.y > canvas.height) {
-            //     circle.y = 0
-            // }
-            // if the circle has gone past the RIGHT side of the screen then place it on the LEFT
-            if (rightEdge > canvas.width ) {
-                rightEdge = 0;
+            if (circle.x > canvas.width) {
+                circle.x = 0
+            }
+            if (circle.x < 0) {
+                circle.x = canvas.width
+            }
+            if (circle.y < 0) {
+                circle.y = canvas.height
+            }
+            if (circle.y > canvas.height) {
+                circle.y = 0
             }
             
             
-            // TODO 6 : YOUR CODE STARTS HERE //////////////////////
-            if (leftEdge < 0) { //testing for left of the screen
-                leftEdge = canvas.width;
-            }
-            if (bottomEdge > canvas.height) { //testing for bottom of the screen
-                bottomEdge = canvas.height
-            }
-            if (topEdge < 0) { //testing for top of the screen
-                topEdge = 0;
-                
-            }
-
-
             // YOUR TODO 6 CODE ENDS HERE //////////////////////////
         }
         
@@ -125,7 +108,30 @@ var init = function (window) {
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 if((typeof process !== 'undefined') &&
-    (typeof process.versions.node !== 'undefined')) {
+(typeof process.versions.node !== 'undefined')) {
     // here, export any references you need for tests //
     module.exports = init;
 }
+
+// if the circle has gone past the RIGHT side of the screen then place it on the LEFT
+//        if (leftEdge > canvas.width) {
+//     circle.x = 0 - circle.radius;
+//   }
+
+//   /*if rightEdge is less than zero, return circle to the right side with the center of the circle starting past the right edge of the screen dependant on circle radius
+//    */
+//   if (rightEdge < 0) {
+//     circle.x = canvas.width + circle.radius;
+//   }
+
+//   /*if bottomEdge is less than 0, return circle to the bottom with the center of the circle starting below the screen dependant on circle radius
+//    */
+//   if (bottomEdge < 0) {
+//     circle.y = canvas.height + circle.radius;
+//   }
+
+/*if topEdge is greater than cavnas.height, return circle to the top of screen with the center of the circle starting above the screen dependant on circle radius
+*/
+//   if (topEdge > canvas.height) {
+//     circle.y = 0 - circle.radius;
+//   }
