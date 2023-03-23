@@ -1,0 +1,33 @@
+User story/Gameplay
+ - It'll be like the classic Pong game, where the board will feature two paddles and a ball that bounces around the screen. 
+    A point system will be implemented where a point will be given to the opposing player if the ball collides with the wall
+    past one of the paddles. If there's enough time, I'd like to make a sort of four players version where the 3rd and 4th 
+    paddles are stationed at the top and bottom of the screen. In that case, the other 3 players will gain a point when the
+    ball collides with one player's 'goal'
+ - The game will have an end. The default will most likely be first to 10 points, but I wanna make some settings where the 
+    player can change things like win condition, paddle color, and maybe even make a timer. 
+ - Most of the if conditions will be for collision detection with the ball. For example, 'if the right side of the ball touches 
+    the right edge of the screen, add points to opposing player(s) and reset ball location.' Another will be added for the left
+    side of the ball. I will also have to add some conditions for the ball when colliding with the paddle. Like this - 'if the
+    ball's x coordinates align with one of the paddle's x values, ball will bounce in the opposite direction" Those example are
+    really all I can think to need off the top of my head but I'm sure i'll need more for other things
+
+Visual Game Componenets
+ - I think as long as I don't add anymore to the background of the page the only visual components will be the ball, the board,
+    and the paddles
+    - the only static component will be the board
+    - the animated components will be the ball and paddles
+ - I'll need constantly updated positions for each of the animated components, which will include the x and y positions for the
+  paddles,that and both speedX and speedY for the ball. I'll need the board's width and height for the point system as well. The 
+  last variables will be point trackers for each player.
+
+Events/logic
+ - I'll need keyboard events for paddle movement, like the arrow keys and wasd, and maybe some shortcut keys for the settings
+    menu. For movement, the event will record keys pressed and compare them with the key variables to determine what movement
+    the player is trying to input and the event will be triggered for that key. The same thing will happen with the shortcut keys
+ - If I do make a timer, it'll probably be a game mode rather than a feature. For that I'll have events for when the timer reaches
+    a certain amount of time left. For example, when the timer reaches 30 seconds, I can have a message pop up above the board that 
+    says "time's almost up!"
+ - I don't think I'll have any clicking events because it don't plan on having any buttons. If i do, there'll be a reset button to
+ reset the game, and a little settings gear in the bottom right corner for the settings screen. For that I'll have event for registering 
+ when the button is clicked.
