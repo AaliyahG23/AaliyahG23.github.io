@@ -29,7 +29,7 @@ The CSS ids you will work with are:
 
 // TODO 3: Implement quickSort
     async function quickSort(array, left, right) {
-        if (left - right > 0) {
+        if (right - left > 0) {
             var index = await partition(array, left, right)
             if (left < index - 1) {
                 await quickSort(array, left, index - 1)
@@ -37,7 +37,7 @@ The CSS ids you will work with are:
             if (right > index) {
                 await quickSort(array, index, right)
             }
-        }else {
+        } else {
             return
         }
     }
@@ -47,10 +47,10 @@ The CSS ids you will work with are:
     async function partition(array, left, right) {
         var pivot = array[Math.floor((right + left)/2)].value;
         while (left < right) {
-            while (array[left] < pivot) {
+            while (array[left].value < pivot) {
                 left = left + 1;
             }
-            while (array[right] > pivot) {
+            while (array[right].value > pivot) {
                 right = right - 1;
             }
             if (left < right) {
