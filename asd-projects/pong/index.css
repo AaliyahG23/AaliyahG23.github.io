@@ -4,18 +4,52 @@ body {
 }
 
 #board {
-  width: 440px;
-  height: 440px;
+  width: 800px;
+  height: 800px;
   border: 1px solid white;
   background-color: black;
   position: relative;
+  top: calc(50vh - 400px);
+  left: calc(50vw - 400px);
 }
 
-#gameItem {
-  background-color: teal;
-  width: 50px;
-  height: 50px;
+#score-board {
+  height: 400px;
+  width: 300px;
+  background-color: yellow;
+  position: static;
+  top: calc(calc(100vh/2) - 100px);
+  float: left;
+}
+
+.Xpaddle {
+  background-color: whitesmoke;
+  width: 25px;
+  height: 125px;
   position: absolute;
-/*   left: 100px; */  /* Uncomment if you want to set a "starting" position */
-/*   top: 100px;  */  /* Uncomment if you want to set a "starting" position */
+  top: calc(calc(800px/2) - calc(125px/2));
+}
+#ball {
+  background-color: whitesmoke;
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  border-radius: 15px;
+}
+
+#leftPaddle {
+  left: 25px;
+}
+
+#rightPaddle {
+left: 750px;
+}
+
+.player-score {
+  font-size: 2em;
+  font-weight: 500;
+  font-family: 'American typewriter', serif;
+
 }
