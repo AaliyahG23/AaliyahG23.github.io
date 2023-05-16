@@ -1,41 +1,41 @@
 
 body {
-  background-color: darkgreen;
+  background-color: mediumaquamarine;
 }
 
 #board {
   width: 800px;
-  height: 800px;
+  height: 600px;
   border: 1px solid white;
   background-color: black;
   position: relative;
-  top: calc(50vh - 400px);
-  left: calc(50vw - 400px);
+  /* top: calc(50vh - 250px); */
+  left: calc(50vw - 250px);
 }
 
 #score-board {
-  height: 400px;
+  height: 200px;
   width: 300px;
-  background-color: yellow;
-  position: static;
-  top: calc(calc(100vh/2) - 100px);
+  background-color: mintcream;
+  position: fixed;
+  top: 100px;
   float: left;
 }
 
-.Xpaddle {
+.paddle {
   background-color: whitesmoke;
   width: 25px;
   height: 125px;
   position: absolute;
-  top: calc(calc(800px/2) - calc(125px/2));
+  top: 240px;
 }
 #ball {
   background-color: whitesmoke;
   height: 25px;
   width: 25px;
   position: absolute;
-  top: 50px;
-  left: 50px;
+  top: 390px;
+  left: 290px;
   border-radius: 15px;
 }
 
@@ -44,7 +44,7 @@ body {
 }
 
 #rightPaddle {
-left: 750px;
+  left: 750px;
 }
 
 .player-score {
