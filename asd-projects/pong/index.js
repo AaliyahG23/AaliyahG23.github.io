@@ -18,14 +18,14 @@ function runProgram(){
   var paddleLeft = {
     id: "#leftPaddle", 
     y: 240,
-    x: 25
+    x: 25,
     speedY: 0
   }
 
   var paddleRight = {
     id: "#rightPaddle", 
     y: 240,
-    x: 750
+    x: 750,
     speedY: 0
   }
 
@@ -44,16 +44,16 @@ function runProgram(){
   }
 
   var KEYS = {
-    upArrow: 38,
-    downArrow: 40,
+    UP: 38,
+    DOWN: 40,
     W: 87,
     S: 83, 
   }
 
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
-  $(document).on('keyDown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
-  $(document).on('keyUp', handleKeyUp);
+  $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
+  $(document).on('keyup', handleKeyUp);
 
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
@@ -102,8 +102,8 @@ function runProgram(){
     }
   }
 
-  function ballPaddleCollision() {
-      if ((ball.x >))
+  function ballPaddleCollision(paddle) {
+      
   }
 
   function Bounds(gameItem) {
