@@ -92,11 +92,13 @@ function runProgram(){
   function points() {
     if (ball.x > (gameBoard.width - $(ball.id).width())) {
       player1Points += 1
+      $("#player1").text('Player 1: ' + player1Points);
       ball.x = 390
       ball.y = 290
     }
     if (ball.x < 0) {
       player2Points += 1
+      $("#player2").text('Player 2: ' + player2Points)
       ball.x = 390
       ball.y = 290
     }
