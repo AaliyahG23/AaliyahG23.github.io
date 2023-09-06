@@ -3,7 +3,10 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 'use strict';
 
-var _ = {};
+var _ = {
+    first,
+    last
+};
 
 
 /**
@@ -49,6 +52,21 @@ var _ = {};
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
+function last(arr, num) {
+    if (Array.isArray(arr) === false) {
+        return []
+    } else if (num === 'undefined' || typeof(num) !== "number") {
+        return arr[arr.length - 1]
+    } else {
+        var res = []
+       for (var i = arr.length; i > 0; i--) {
+            if (i > arr.length - num) {
+                res.push(arr[i])
+            }
+       }
+       return res
+    }
+}
 
 
 /** _.last
@@ -68,6 +86,22 @@ var _ = {};
 *   _.last(["a", "b", "c"], 1) -> "c"
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
+
+function last(arr, num) {
+    if (Array.isArray(arr) === false) {
+        return []
+    } else if (num === 'undefined' || typeof(num) !== "number") {
+        return arr[arr.length - 1]
+    } else {
+        var res = []
+       for (var i = arr.length - 1; i > arr.length; i--) {
+            if (i > num) {
+                res.push(arr[i])
+            }
+       }
+       return res
+    }
+}
 
 
 /** _.indexOf
