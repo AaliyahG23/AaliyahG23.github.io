@@ -94,8 +94,8 @@ function last(arr, num) {
         return arr[arr.length - 1]
     } else {
         var res = []
-       for (var i = arr.length - 1; i > arr.length; i--) {
-            if (i > num) {
+       for (var i = 0; i < arr.length; i++) {
+            if (i > (arr.length - 1) - num) {
                 res.push(arr[i])
             }
        }
@@ -119,6 +119,24 @@ function last(arr, num) {
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
+
+function indexOf(arr, val) {
+    var res = []
+    if (Array.isArray === false) {
+        return "Array not found"
+    } else {
+        for (var i = 0; i < arr.length - 1; i++) {
+            if (val === arr[i]) {
+                res.push(i)
+            }
+        }
+        if (res === []) {
+            return -1
+        } else {
+          return res
+        }
+    }
+}
 
 
 /** _.contains
