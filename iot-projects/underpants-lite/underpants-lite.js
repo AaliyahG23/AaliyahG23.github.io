@@ -5,7 +5,9 @@
 
 var _ = {
     first,
-    last
+    last,
+    indexOf,
+    contains
 };
 
 
@@ -52,15 +54,15 @@ var _ = {
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
-function last(arr, num) {
+function first(arr, num) {
     if (Array.isArray(arr) === false) {
         return []
     } else if (num === 'undefined' || typeof(num) !== "number") {
-        return arr[arr.length - 1]
+        return arr[0]
     } else {
         var res = []
-       for (var i = arr.length; i > 0; i--) {
-            if (i > arr.length - num) {
+       for (var i = 0; i < arr.length; i++) {
+            if (i < num) {
                 res.push(arr[i])
             }
        }
@@ -121,20 +123,15 @@ function last(arr, num) {
 */
 
 function indexOf(arr, val) {
-    var res = []
     if (Array.isArray === false) {
         return "Array not found"
     } else {
-        for (var i = 0; i < arr.length - 1; i++) {
+        for (var i = 0; i < arr.length; i++) {
             if (val === arr[i]) {
-                res.push(i)
+                return i
             }
         }
-        if (res === []) {
-            return -1
-        } else {
-          return res
-        }
+        return -1
     }
 }
 
@@ -154,6 +151,14 @@ function indexOf(arr, val) {
 *   _.contains([1,"two", 3.14], "three") -> false
 */
 
+function contains(arr, val) {
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] === val) {
+            return true
+        }
+    }
+    return false
+}
 
 /** _.each
 * Arguments:
