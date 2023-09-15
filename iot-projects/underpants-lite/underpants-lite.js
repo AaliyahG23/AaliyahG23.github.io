@@ -4,10 +4,19 @@
 'use strict';
 
 var _ = {
+    typeOf,
     first,
     last,
     indexOf,
-    contains
+    contains,
+    each,
+    filter,
+    map,
+    reject,
+    patition,
+    every,
+    some,
+    pluck
 };
 
 
@@ -36,6 +45,19 @@ var _ = {
 * _.typeOf([1,2,3]) -> "array"
 */
 
+function typeOf(val) {
+    if (typeof(val) !== 'object') {
+        return typeof(val)
+    } else {
+        if (val === null) {
+            return 'null'
+        } else if (Array.isArray(val) === true) {
+            return 'array'
+        } else {
+            return 'object'
+        }
+    }
+}
 
 /** _.first
 * Arguments:
@@ -176,6 +198,20 @@ function contains(arr, val) {
 *      -> should log "a" "b" "c" to the console
 */
 
+function each(coll, func) {
+    if (typeof(coll) === 'object') {
+        if (Array.isArray(coll) === true) {
+            for (var i = 0; i < coll.length; i++) {
+                func(coll[i], i, coll)
+            }
+        } else if (coll !== null) {
+            for (var key in coll) {
+                func(coll[key], key, coll)
+            }
+        }
+    }
+    
+}
 
 /** _.filter
 * Arguments:
@@ -194,6 +230,15 @@ function contains(arr, val) {
 *   use _.each in your implementation
 */
 
+function filter(arr, func) {
+    var res = []
+    for (var i = 0; i < arr.length; i++) {
+        if (func(arr[i], i, arr) === true) {
+            res.push(arr[i])
+        }
+    }
+    return res
+}
 
 /** _.map
 * Arguments:
@@ -212,6 +257,23 @@ function contains(arr, val) {
 *   _.map([1,2,3,4], function(e){ return e * 2; }) -> [2,4,6,8]
 */
 
+function map(coll, func) {
+    if (Array.isArray(coll) === true) {
+        var res = []
+        for (var i = 0; i < coll.length; i++) {
+            res.push(func(coll[i], i, coll))
+        }
+        return res
+    } else if (typeof(coll) !== null) {
+        var res = []
+        for (var key in coll) {
+            res.push(func(coll[key], key, coll))
+        }
+        return res
+    } else {
+        return []
+    }
+}
 
 /** _.reject
 * Arguments:
