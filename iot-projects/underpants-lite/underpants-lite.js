@@ -13,7 +13,7 @@ var _ = {
     filter,
     map,
     reject,
-    patition,
+    partition,
     every,
     some,
     pluck
@@ -291,6 +291,17 @@ function map(coll, func) {
 *   _.reject([1,2,3,4,5], function(e){ return e%2 === 0}; ) -> [1,3,5]
 */
 
+function reject(arr, func) {
+    if (Array.isArray(arr)) {
+        var res = []
+        for (var i = 0; i < arr.length; i++) {
+            if (func(arr[i], i, arr) !== true) {
+                res.push(arr[i])
+            }
+        }
+        return res
+    }
+}
 
 /** _.partition
 * Arguments:
@@ -311,6 +322,22 @@ function map(coll, func) {
 }
 */
 
+function partition(arr, func) {
+    if (Array.isArray) {
+        var truthy = []
+        var falsey = []
+        var res = [truthy, falsey]
+        for (var i = 0; i < arr.length; i++) {
+            if (func(arr[i], i, arr) === true) {
+                truthy.push(arr[i])
+            } 
+            if (func(arr[i], i, arr) === false) {
+                falsey.push(arr[i])
+            }
+        }
+        return res
+    }
+}
 
 /** _.every
 * Arguments:
@@ -334,6 +361,23 @@ function map(coll, func) {
 *   _.every([1,2,3], function(e){ return e % 2 === 0}; ) -> false
 */
 
+function every(coll, func) {
+    if (Array.isArray(coll)) {
+        for (var i = 0; i < coll.length; i++) {
+            if (func(coll[i], i, coll) === false) {
+                return false
+            }
+        }
+        return true
+    } else if (typeOf(coll) === 'object') {
+        for (var key in coll) {
+            if (func(coll[key], key, coll) === false) {
+                return false
+            }
+        }
+        return true
+    }
+}
 
 /** _.some
 * Arguments:
@@ -357,6 +401,9 @@ function map(coll, func) {
 *   _.some([1,2,3], function(e){ return e % 2 === 0}; ) -> true
 */
 
+function some(coll, func) {
+
+}
 
 /** _.pluck
 * Arguments:
@@ -369,6 +416,9 @@ function map(coll, func) {
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 
+function pluck(arr, prop) {
+
+}
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
