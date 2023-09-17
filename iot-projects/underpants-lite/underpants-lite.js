@@ -79,7 +79,7 @@ function typeOf(val) {
 function first(arr, num) {
     if (Array.isArray(arr) === false) {
         return []
-    } else if (num === 'undefined' || typeof(num) !== "number") {
+    } else if (num === 'undefined' || _.typeOf(num) !== "number") {
         return arr[0]
     } else {
         var res = []
@@ -114,7 +114,7 @@ function first(arr, num) {
 function last(arr, num) {
     if (Array.isArray(arr) === false) {
         return []
-    } else if (num === 'undefined' || typeof(num) !== "number") {
+    } else if (num === 'undefined' || _.typeOf(num) !== "number") {
         return arr[arr.length - 1]
     } else {
         var res = []
@@ -145,9 +145,7 @@ function last(arr, num) {
 */
 
 function indexOf(arr, val) {
-    if (Array.isArray === false) {
-        return "Array not found"
-    } else {
+    if (Array.isArray === true) {
         for (var i = 0; i < arr.length; i++) {
             if (val === arr[i]) {
                 return i
@@ -264,7 +262,7 @@ function map(coll, func) {
             res.push(func(coll[i], i, coll))
         }
         return res
-    } else if (typeof(coll) !== null) {
+    } else if (_.typeOf(coll) === "object") {
         var res = []
         for (var key in coll) {
             res.push(func(coll[key], key, coll))
@@ -363,13 +361,29 @@ function partition(arr, func) {
 
 function every(coll, func) {
     if (Array.isArray(coll)) {
+        if (_.typeOf(func) !== 'function') {
+            for (var i = 0; i < coll.length; i++) {
+                if(!(coll[i])) {
+                    return false
+                }
+            }
+            return true
+        }
         for (var i = 0; i < coll.length; i++) {
             if (func(coll[i], i, coll) === false) {
                 return false
             }
         }
         return true
-    } else if (typeOf(coll) === 'object') {
+    } else if (_.typeOf(coll) === 'object') {
+        if (_.typeOf(func) !== 'function') {
+            for (var key in coll) {
+                if (!(coll[key])) {
+                    return false
+                }
+            }
+            return true
+        }
         for (var key in coll) {
             if (func(coll[key], key, coll) === false) {
                 return false
@@ -402,7 +416,37 @@ function every(coll, func) {
 */
 
 function some(coll, func) {
-
+    if (Array.isArray(coll)) {
+        if (_.typeOf(func) !== 'function') {
+            for (var i = 0; i < coll.length; i++) {
+                if(coll[i]) {
+                    return true
+                }
+            }
+            return false
+        }
+        for (var i = 0; i < coll.length; i++) {
+            if (func(coll[i], i, coll)) {
+                return true
+            }
+        }
+        return false
+    } else if (_.typeOf(coll) === 'object') {
+        if (_.typeOf(func) !== 'function') {
+            for (var key in coll) {
+                if (coll[key]) {
+                    return true
+                }
+            }
+            return false
+        }
+        for (var key in coll) {
+            if (func(coll[key], key, coll)) {
+                return true
+            }
+        }
+        return false
+    }
 }
 
 /** _.pluck
@@ -417,7 +461,18 @@ function some(coll, func) {
 */
 
 function pluck(arr, prop) {
-
+    var res = []
+    for (var i = 0; i < arr.length; i++) {
+        if (typeOf(arr[i]) === 'object') {
+            res.push(_.map(arr[i], function(obj){
+                for (var key in obj){
+                    if (key === prop) {
+                        return obj[key]
+                    }
+                }
+            }))
+        }
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
