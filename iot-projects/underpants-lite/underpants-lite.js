@@ -464,16 +464,22 @@ function pluck(arr, prop) {
     var res = []
     for (var i = 0; i < arr.length; i++) {
         if (typeOf(arr[i]) === 'object') {
-            res.push(_.map(arr[i], function(obj){
-                for (var key in obj){
-                    if (key === prop) {
-                        return obj[key]
-                    }
+            res.push(map(arr[i], function(e, key, obj){
+                if (key === prop) {
+                  return e
                 }
             }))
         }
     }
-}
+    for (var i = 0; i < res.length; i++) {
+      filter(res[i], function(e, index, arr) {
+        if (e !== undefined) {
+          return true
+        }
+      })
+    }
+    return res
+  }
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
