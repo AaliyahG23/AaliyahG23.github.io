@@ -1,7 +1,7 @@
 const http = require("http");
 const async = require("async");
 
-const port = 8686;
+const port = 8990;
 
 http.createServer(function(req, res) {
     res.writeHead(200, {'Content-Type': 'text/plain'});
@@ -12,7 +12,7 @@ http.createServer(function(req, res) {
     let startTime = d.getTime();
 
     // TODO 12: Make the whole thing parallel
-    async.series( 
+    async.parallel( 
         // TODO 9: Supply an array of functions
         [function a(callback) {
             wrapper(callback);
@@ -36,6 +36,10 @@ http.createServer(function(req, res) {
                 res.write(victoryOrder[i]+ "\n")
             }
             let d = new Date()
+            let endTime = d.getTime
+            let duration = endTime - startTime
+            res.write(duration + "\n")
+            res.end()
         }
     );
     
