@@ -35,7 +35,7 @@
   ball.x = canvas.width / 2;
   ball.y = canvas.height / 2;
   ball.xVelocity = 5;
-  ball.yVelocity = 5;
+  ball.yVelocity = 0;
 
   // add the paddles and the ball to the view
   stage.addChild(paddlePlayer, paddleCPU, ball);
@@ -84,6 +84,7 @@
     }
 
     // AI movement: CPU follows ball //
+    //14 = ball detection margin//
     if ((paddleCPU.y + midCPU) < (ball.y - 14)) {
       paddleCPU.y += paddleCPU.yVelocity;
     } else if ((paddleCPU.y + midCPU) > (ball.y + 14)) {
@@ -91,14 +92,39 @@
     }
 
     // TODO 1: bounce the ball off the top
-
+    if ((ball.y - ball.radius) < 0 ) {
+      ball.yVelocity *= -1;
+    }
 
     // TODO 2: bounce the ball off the bottom
+    if ((ball.y + ball.radius) > canvas.height) {
+      ball.yVelocity *= -1;
+    }
+    
+
+   // TODO 3: bounce the ball off each of the paddles
+    if ((ball.y - ball.radius) < (paddleCPU.y + heightCPU) && (ball.y + ball.radius) > paddleCPU.y) {
+      if ((ball.x + ball.radius) > paddleCPU.x) {
+        ball.xVelocity *= -1;
+      }
+    }
+
+    if ((ball.y - ball.radius) < (paddlePlayer.y + heightPlayer) && (ball.y + ball.radius) > paddlePlayer.y) {
+      if ((ball.x - ball.radius) < (paddlePlayer.x + widthPlayer)) {
+        ball.xVelocity *=-1;
+      }
+    }
+
+  // Adding Sounds
 
 
-    // TODO 3: bounce the ball off each of the paddles
+  // Resetting Out-of-bounds ball
+    if ((ball.x - ball.radius) < 0 || (ball.x + ball.radius) > canvas.width) {
+      ball.x = canvas.width/2
+    }
 
-
+  // Scoreboard
+  
   }
 
   // helper function that wraps the draw.rect function for easy paddle making
