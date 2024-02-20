@@ -35,7 +35,7 @@
   ball.x = canvas.width / 2;
   ball.y = canvas.height / 2;
   ball.xVelocity = 5;
-  ball.yVelocity = 0;
+  ball.yVelocity = 5;
 
   // add the paddles and the ball to the view
   stage.addChild(paddlePlayer, paddleCPU, ball);
@@ -93,11 +93,13 @@
 
     // TODO 1: bounce the ball off the top
     if ((ball.y - ball.radius) < 0 ) {
+      createjs.Sound.play("wall")
       ball.yVelocity *= -1;
     }
 
     // TODO 2: bounce the ball off the bottom
     if ((ball.y + ball.radius) > canvas.height) {
+      createjs.Sound.play("wall")
       ball.yVelocity *= -1;
     }
     
@@ -105,17 +107,18 @@
    // TODO 3: bounce the ball off each of the paddles
     if ((ball.y - ball.radius) < (paddleCPU.y + heightCPU) && (ball.y + ball.radius) > paddleCPU.y) {
       if ((ball.x + ball.radius) > paddleCPU.x) {
+        createjs.Sound.play("wall")
         ball.xVelocity *= -1;
       }
     }
 
     if ((ball.y - ball.radius) < (paddlePlayer.y + heightPlayer) && (ball.y + ball.radius) > paddlePlayer.y) {
       if ((ball.x - ball.radius) < (paddlePlayer.x + widthPlayer)) {
+        createjs.Sound.play("wall")
         ball.xVelocity *=-1;
       }
     }
 
-  // Adding Sounds
 
 
   // Resetting Out-of-bounds ball
