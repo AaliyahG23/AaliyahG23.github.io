@@ -1,0 +1,31 @@
+{
+  "name": "y",
+  "main": "index.js",
+  "homepage": "https://github.com/AaliyahG23/gaming",
+  "description": "gaming library",
+  "authors": [
+    "AaliyahG23"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "version": "1.2.0",
+  "_release": "1.2.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.2.0",
+    "commit": "4fd4eb85be40d0a296c97ffad75ac68632a5a3a7"
+  },
+  "_source": "https://github.com/AaliyahG23/gaming.git",
+  "_target": "^1.2.0",
+  "_originalSource": "https://github.com/AaliyahG23/gaming.git",
+  "_direct": true
+}
